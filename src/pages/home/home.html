@@ -1,17 +1,235 @@
-<ion-header>
+<ion-header id="header-p">
   <ion-navbar>
-    <ion-title>Home</ion-title>
+   
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+         
+    
+          
+          <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+         
+         
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon name="people"></ion-icon>
+
+        </ion-col>
+        <ion-col col-2>
+          
+          <ion-icon ios="ios-text" md="md-text"></ion-icon>
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon name="logo-dribbble"></ion-icon>
+
+        </ion-col>
+
+
+
+        
+      </ion-row>
+    </ion-grid>
+
+   
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-grid>
+ 
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="Publicar">
+        <ion-icon name="mail" item-left></ion-icon> Publicar
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+       Video
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Ubicación
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- section -->
+   
+    
+    <ion-row>
+      <ion-col col-md-12>
+          <ion-card>
+
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/imgs/fa.jpg">
+                </ion-avatar>
+                <h2>Marty McFly</h2>
+                <p>November 5, 1955</p>
+              </ion-item>
+            
+              <img src="assets/imgs/ele.jpg">
+            
+              <ion-card-content>
+                <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+              </ion-card-content>
+            
+              <ion-row>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="cont = cont + 1">
+                    <ion-icon  name="thumbs-up"></ion-icon>
+                    <div>{{cont}}</div>
+                  </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="coments = !coments">
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                  </button>
+                </ion-col>
+                <ion-col center text-center>
+                  <ion-note>
+                    11h ago
+                  </ion-note>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="coments">
+                <ion-col>
+                  <ion-list>
+                      <ion-item>
+                          <ion-label floating>Comment...</ion-label>
+                          <ion-input type="text" (keydown.enter)="addComment($event.target)"></ion-input>
+                        </ion-item>
+                        <ion-item  *ngFor="let com of commentsUsers">
+                            <ion-avatar item-start>
+                              <img src="assets/imgs/buzz.jpg">
+                            </ion-avatar>
+                            <h2>{{com.usuario}}</h2>
+                            <p>{{com.comentario}}</p>
+                          </ion-item>
+                  
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            
+            </ion-card>
+  
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-md-12>
+          <ion-card>
+
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/imgs/part.jpg">
+                </ion-avatar>
+                <h2>Marty McFly</h2>
+                <p>November 5, 1955</p>
+              </ion-item>
+            
+              <img src="assets/imgs/part.jpg">
+            
+              <ion-card-content>
+                <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+              </ion-card-content>
+            
+              <ion-row>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="showAlert()">
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                  </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                  </button>
+                </ion-col>
+                <ion-col center text-center>
+                  <ion-note>
+                    11h ago
+                  </ion-note>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="coments">
+                  <ion-col>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label floating>Comment...</ion-label>
+                            <ion-input type="text" (keydown.enter)="addComment($event.target)"></ion-input>
+                          </ion-item>
+                          <ion-item  *ngFor="let com of commentsUsers">
+                              <ion-avatar item-start>
+                                <img src="assets/imgs/buzz.jpg">
+                              </ion-avatar>
+                              <h2>{{com.usuario}}</h2>
+                              <p>{{com.comentario}}</p>
+                            </ion-item>
+                    
+                    </ion-list>
+                  </ion-col>
+                </ion-row>
+            </ion-card>
+  
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-md-12>
+          <ion-card>
+
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/imgs/mod.jpg">
+                </ion-avatar>
+                <h2>Carlos Torres</h2>
+                <p>November 5, 1955</p>
+              </ion-item>
+            
+              <img src="assets/imgs/sele.jpg">
+            
+              <ion-card-content>
+                <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+              </ion-card-content>
+            
+              <ion-row>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="showAlert()">
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                  </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                  </button>
+                </ion-col>
+                <ion-col center text-center>
+                  <ion-note>
+                    11h ago
+                  </ion-note>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="coments">
+                  <ion-col>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label floating>Comment...</ion-label>
+                            <ion-input type="text" (keydown.enter)="addComment($event.target)"></ion-input>
+                          </ion-item>
+                          <ion-item  *ngFor="let com of commentsUsers">
+                              <ion-avatar item-start>
+                                <img src="assets/imgs/buzz.jpg">
+                              </ion-avatar>
+                              <h2>{{com.usuario}}</h2>
+                              <p>{{com.comentario}}</p>
+                            </ion-item>
+                    
+                    </ion-list>
+                  </ion-col>
+                </ion-row>
+            </ion-card>
+            </ion-col> 
+     
+    </ion-row>
+  </ion-grid>
 </ion-content>
